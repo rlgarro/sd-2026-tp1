@@ -23,4 +23,9 @@ module datapath (
     // COMPLETAR: conectar operandos, resultado, flags e índice A.
     // El cast del opcode está provisto.
     assign alu_io.opcode = alu_op_e'(opcode);
+    assign alu_io.operand_a = rf_rs1_data;
+    assign alu_io.operand_b = rf_rs2_data;
+    assign flags = alu_io.flags;
+    assign regA_idx = (rf_we == 1'b0) ? rs1 : rd;
+    assign result = alu_io.result;
 endmodule
